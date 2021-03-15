@@ -3,4 +3,8 @@
         <th>Brand Id</th>
         <th>Brand Name</th>
     </tr>
+    <tr *ngFor="let brand of brands">
+        <td>{{brand.id}}</td>
+        <td>{{brand.name}}</td>
+    </tr>
 </table>
