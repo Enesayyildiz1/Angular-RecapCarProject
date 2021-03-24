@@ -1,7 +1,15 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-info" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
-<table *ngIf="dataLoaded==true" class="table">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">İsme Göre Arama</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesini girin">
+  </div>
+  <div *ngIf="filterText.length>2" class="alert alert-primary">
+     {{filterText}} aradınız
+
+  </div>
+<table  style="margin-top:20px;" *ngIf="dataLoaded==true" class="table">
     <tr >
         <th>Id</th>
         <th>Name</th>
@@ -12,7 +20,7 @@
         
         
     </tr>
-    <tr  (click)="setCurrentCar(car)" *ngFor="let car of cars" routerLink="/cars/detail/{{car.id}}">
+    <tr  (click)="setCurrentCar(car)" *ngFor="let car of cars | filterPipe:filterText" routerLink="/cars/detail/{{car.id}}">
         <td>{{car.id}}</td>
         <td>{{car.name}}</td>
         <td>{{car.brandName}}</td>

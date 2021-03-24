@@ -1,6 +1,7 @@
+
+ <div style="margin-top: 20px;">
 <ul class="list-group">
-  <li  [class]="getAllColorClass()"   routerLink="/cars">Tümünü Getir</li>
-  <h6>Renk filtrele</h6>
+ <h6 style="font-size: large; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Renk filtrele</h6>
   
     <li (click)="setCurrentColor(color)" 
     routerLink="/cars/color/{{color.id}}"
@@ -9,5 +10,7 @@
     {{color.name}}</li>
    
   </ul>
-  <p *ngIf="currentColor">{{currentColor.name}}</p>
+ </div>
+ 
+  
 

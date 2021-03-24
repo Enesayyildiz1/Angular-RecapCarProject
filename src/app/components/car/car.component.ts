@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CarComponent implements OnInit {
   cars: Car[] = [];
   currentCar:Car;
+  filterText="";
 
  dataLoaded=false;
 
