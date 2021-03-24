@@ -10,10 +10,12 @@ import { NaviComponent } from './components/navi/navi.component';
 import { CarComponent } from './components/car/car.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import {ToastrModule} from "ngx-toastr";
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component'
 
 @NgModule({
   declarations: [
@@ -24,16 +26,24 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
     CarComponent,
     CustomerComponent,
     RentalComponent,
-    
+  
     CarDetailComponent,
     
-    FilterPipePipe
+    FilterPipePipe,
+    
+    CartSummaryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        positionClass:"toast-bottom-right"
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

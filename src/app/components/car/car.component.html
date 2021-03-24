@@ -17,9 +17,11 @@
         <th>Color Name</th>
         <th>Model Year</th>
         <th>Daily Price</th>
+        <th></th>
         
         
     </tr>
+    <tbody>
     <tr  (click)="setCurrentCar(car)" *ngFor="let car of cars | filterPipe:filterText" routerLink="/cars/detail/{{car.id}}">
         <td>{{car.id}}</td>
         <td>{{car.name}}</td>
@@ -27,7 +29,9 @@
         <td>{{car.colorName}}</td>
         <td>{{car.modelYear}}</td>
         <td>{{car.dailyPrice}}</td>
+        <td><button (click)="addToCart(car)" type="button" class="btn btn-primary">Sepete Ekle</button></td>
        
 
     </tr>
+</tbody>
 </table>
