@@ -1,10 +1,21 @@
+  <li  [class]="getAllBrandClass()"   routerLink="/cars">Tümünü Getir</li>
+<div class="alert alert-primary">
+  <h6 style="font-size: large; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Marka filtrele</h6>
+<div class="mb-3"> 
+ <label for="exampleFormControlInput1" class="form-label">İsme Göre Arama</label>
+ <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Aranacak markayı girin">
+</div>
 <ul class="list-group">
-    <li  [class]="getAllBrandClass()"   routerLink="/cars">Tümünü Getir</li>
-    <h6>Marka filtrele</h6>
-    <li  (click)="setCurrentBrand(brand)"
+ <li  (click)="setCurrentBrand(brand)"
      routerLink="/cars/brand/{{brand.id}}"
      [class]="getCurrentBrandClass(brand)"
-       *ngFor="let brand of brands">
+       *ngFor="let brand of brands | filterPipe:filterText">
      {{brand.name}}</li>
 </ul>
+
+
+</div>
+  
+   
+   
 

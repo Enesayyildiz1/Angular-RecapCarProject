@@ -1,12 +1,19 @@
 
  <div style="margin-top: 20px;">
-<ul class="list-group">
- <h6 style="font-size: large; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Renk filtrele</h6>
+ 
+<div class="alert alert-primary">
+   <h6 style="font-size: large; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Renk filtrele</h6>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">İsme Göre Arama</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Aranacak rengi girin">
+</div>
+   <ul class="list-group">
+ 
   
     <li (click)="setCurrentColor(color)" 
     routerLink="/cars/color/{{color.id}}"
     [class]="getCurrentColorClass(color)"  
-    *ngFor="let color of colors">
+    *ngFor="let color of colors | filterPipe:filterText">
     {{color.name}}</li>
    
   </ul>
