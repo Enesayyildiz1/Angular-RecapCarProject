@@ -21,7 +21,7 @@
       class="form-select"
       aria-label="Default select example"
     >
-      <option selected>Renk Seçin</option>
+    
       <option
         *ngFor="let color of colors"
         [value]="color.id"
@@ -37,11 +37,11 @@
       class="form-select"
       aria-label="Default select example"
     >
-      <option selected>Marka Seçin</option>
+      
       <option
         *ngFor="let brand of brands"
         [value]="brand.id"
-        [selected]="getSelectedColor(brand.id)"
+        [selected]="getSelectedBrand(brand.id)"
       >
         {{ brand.name }}
       </option>
@@ -50,7 +50,7 @@
   <div  class="col-md-2">
     <button
     
-    routerLink="/cars/color/{{colorFilter}}"
+    routerLink="/cars/color/{{colorFilter}}/brand/{{brandFilter}}"
       type="button"
       class="btn btn-primary"
     >
@@ -72,6 +72,7 @@
     <th></th>
   </tr>
   <tbody>
+
     <tr
       (click)="setCurrentCar(car)"
       *ngFor="let car of cars | filterPipe: filterText"

@@ -35,7 +35,10 @@ export class CarComponent implements OnInit {
     colorFilter: Number;
   ngOnInit(): void {
    this.activatedRoute.params.subscribe(parametreler=>{
-     if(parametreler["brandId"])
+    if(parametreler["colorId"] && parametreler["brandId"]){
+      this.getCarsByColorIdAndBrandId(parametreler["colorId"],parametreler["brandId"]);
+    }
+    else if(parametreler["brandId"])
      {
       
        this.getCarsByBrandId(parametreler["brandId"]);
@@ -79,6 +82,16 @@ export class CarComponent implements OnInit {
           this.dataLoaded=true;
         })
       }
+      getCarsByColorIdAndBrandId(colorId:number,brandId:number) {
+        this.carService.getCarsByColorIdBrandId(colorId,brandId).subscribe(response=>
+          {
+            this.cars=response.data;
+            if(colorId===3)
+            {
+              this.toastrService.info("Sıkıntı");
+            }
+          })
+        }
       addToCart(car:Car)
       {
         if(car.id===1)
@@ -105,6 +118,7 @@ export class CarComponent implements OnInit {
               
             })
           }
+         
           getSelectedBrand(brandId: Number) {
             if (this.brandFilter == brandId)
               return true;
