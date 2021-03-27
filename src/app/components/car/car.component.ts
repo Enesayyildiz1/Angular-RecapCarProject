@@ -86,9 +86,10 @@ export class CarComponent implements OnInit {
         this.carService.getCarsByColorIdBrandId(colorId,brandId).subscribe(response=>
           {
             this.cars=response.data;
-            if(colorId===3)
+            this.dataLoaded=true;
+            if(this.cars.length==0)
             {
-              this.toastrService.info("Sıkıntı");
+              this.toastrService.info("İstenilen kriterlere ait ürün bulunamadı.");
             }
           })
         }
