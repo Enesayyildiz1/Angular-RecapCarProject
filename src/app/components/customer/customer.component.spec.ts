@@ -10,6 +10,7 @@ describe('CustomerComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CustomerComponent ]
     })
+    
     .compileComponents();
   });
 
