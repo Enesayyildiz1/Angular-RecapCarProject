@@ -50,6 +50,7 @@ export class CarComponent implements OnInit {
      else
      {
        this.getCars();
+       
      }
    })
    this.getColors();

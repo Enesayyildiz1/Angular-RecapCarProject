@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Car } from 'src/app/models/car';
+
 
 import { CarImage } from 'src/app/models/carImage';
 import { CarImageService } from 'src/app/services/car-image.service';
+import { CarService } from 'src/app/services/car.service';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-car-detail',
@@ -13,15 +16,18 @@ export class CarDetailComponent implements OnInit {
 
   carImages:CarImage[]=[];
   baseUrl="https://localhost:44305";
- 
+ cars:Car[];
   
-  constructor(private carImageService:CarImageService,private activatedRoute:ActivatedRoute) { }
+  constructor(private carImageService:CarImageService,private activatedRoute:ActivatedRoute,private carService:CarService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((parametreler)=>
     {
-      this.getCarImagesByCarId(parametreler["id"]);
-    })
+      this.getCarImagesByCarId(parametreler["carId"]);
+     this.getCarByCarId(parametreler["carId"]);
+     
+    }) 
+    
   }
   getCarImagesByCarId(id:number)
   {
@@ -29,11 +35,15 @@ export class CarDetailComponent implements OnInit {
         {
             this.carImages= response.data;
             console.log(this.carImages);
+            console.log(this.baseUrl);
+            console.log(this.cars);
         }
         
 
         )
+       
   }
+ 
   getSliderClassName(index: Number) {
     if (index == 0) {
       return 'carousel-item active';
@@ -41,5 +51,12 @@ export class CarDetailComponent implements OnInit {
       return 'carousel-item';
     }
   }
+  getCarByCarId(carId:number) {
+    this.carService.getCarById(carId).subscribe(response=>
+      {
+        this.cars=response.data;
+        
+      })
+    }
 }
 

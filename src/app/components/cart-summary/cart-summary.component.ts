@@ -17,9 +17,11 @@ export class CartSummaryComponent implements OnInit {
 
   ngOnInit(): void {
       this.getCart();
+      
   }
   getCart(){
     this.cartItems=this.cartService.list();
+
   }
   removeFromCart(car:Car)
   {

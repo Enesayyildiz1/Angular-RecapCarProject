@@ -13,6 +13,8 @@ describe('NaviComponent', () => {
     .compileComponents();
   });
 
+  
+
   beforeEach(() => {
     fixture = TestBed.createComponent(NaviComponent);
     component = fixture.componentInstance;

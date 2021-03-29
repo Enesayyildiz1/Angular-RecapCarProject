@@ -1,24 +1,33 @@
-<div class="container">
-    <div class="row align-items-center">
-        <div>
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">    
-                <div class="carousel-inner">
-                  <div *ngFor="let image of carImages  let i = index " [ngClass]="getSliderClassName(i)">
-                  
-                   <img src="{{baseUrl}}{{carImages.imagePath}}" class="d-block w-100">
-                  </div>     
-                </div>
-               
-            </div>
-        </div>
 
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div *ngFor="let image of carImages let i = index" [ngClass]="getSliderClassName(i)">
+        <img src="{{baseUrl}}/{{image.imagePath}}" class="d-block w-100" width="800" height="400" alt="...">
+      </div>
     </div>
-
-
-
-
-
-
-
-
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
 </div>
+<table class="table table-success table-striped" style="margin: 10px;">
+  
+      <tbody *ngFor="let car of cars">
+        <tr> <th scope="row">Id</th> <td>: {{ car.id }} </td> </tr>
+        <tr> <th scope="row">Name</th> <td>: {{ car.brandName }} </td> </tr>
+        <tr> <th scope="row">Brand Name</th> <td>: {{ car.name }}</td> </tr>
+        <tr> <th scope="row">Color Name</th> <td>: {{ car.colorName }}</td> </tr>
+        <tr> <th scope="row">Daily Price</th> <td> : {{ car.dailyPrice }}</td> </tr>
+        <tr> <th scope="row">Model Year</th> <td>: {{ car.modelYear }} </td> </tr>
+      
+
+      </tbody> 
+  </table><td colspan="2" scope="row" style="text-align: center" *ngFor="let car of cars">
+    <button routerLink="/rent/car/{{ car.id }}" type="button" class="btn btn-success" style="width: 150px" > KIRALA </button>
+  </td>
+ 
