@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import{FormsModule} from "@angular/forms";
+
 import { AppRoutingModule } from './app-routing.module';
 import{HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -11,11 +11,14 @@ import { CarComponent } from './components/car/car.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import {ToastrModule} from "ngx-toastr";
-import { CartSummaryComponent } from './components/cart-summary/cart-summary.component'
+import { DatePipe } from '@angular/common';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { RentalAddComponent } from './components/rental-add/rental-add.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +34,11 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
     
     FilterPipePipe,
     
-    CartSummaryComponent
+    CartSummaryComponent,
+    
+    PaymentComponent,
+    
+    RentalAddComponent
   ],
   imports: [
     BrowserModule,
@@ -39,13 +46,17 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot(
       {
         positionClass:"toast-bottom-right"
       }
     )
   ],
-  providers: [],
+  providers: [
+    DatePipe,
+  ],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

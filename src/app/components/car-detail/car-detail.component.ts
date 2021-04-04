@@ -6,6 +6,7 @@ import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
+import { RentalService } from 'src/app/services/rental.service';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-car-detail',
@@ -13,18 +14,24 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./car-detail.component.css']
 })
 export class CarDetailComponent implements OnInit {
-
+  cars:Car[];
   carImages:CarImage[]=[];
   baseUrl="https://localhost:44305";
- cars:Car[];
+  rentalControl = false;
+  rentalMessage="";
+
   
-  constructor(private carImageService:CarImageService,private activatedRoute:ActivatedRoute,private carService:CarService) { }
+  constructor(private carImageService:CarImageService,
+    private activatedRoute:ActivatedRoute,
+    private carService:CarService,
+    private rentalService:RentalService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((parametreler)=>
     {
       this.getCarImagesByCarId(parametreler["carId"]);
      this.getCarByCarId(parametreler["carId"]);
+     this.getCarRentalControl(parametreler["carId"])
      
     }) 
     
@@ -58,5 +65,12 @@ export class CarDetailComponent implements OnInit {
         
       })
     }
+    getCarRentalControl(carId:number) {
+      this.rentalService.getRentalCarControl(carId).subscribe((response) => { 
+        this.rentalControl=response.success;
+        this.rentalMessage=response.message; 
+      });
+
+}
 }
 
