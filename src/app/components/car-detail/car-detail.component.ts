@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./car-detail.component.css']
 })
 export class CarDetailComponent implements OnInit {
-  cars:Car[];
+  cars:Car;
   carImages:CarImage[]=[];
   baseUrl="https://localhost:44305";
   rentalControl = false;
@@ -61,7 +61,7 @@ export class CarDetailComponent implements OnInit {
   getCarByCarId(carId:number) {
     this.carService.getCarById(carId).subscribe(response=>
       {
-        this.cars=response.data;
+        this.cars=response.data[0];
         
       })
     }

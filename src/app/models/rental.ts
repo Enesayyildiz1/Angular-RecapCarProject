@@ -11,5 +11,5 @@ export interface Rental{
     carDescription:string,
     rentDate:Date,
     returnDate:Date,
-    customerId?:number,
+    id?:number,
 }

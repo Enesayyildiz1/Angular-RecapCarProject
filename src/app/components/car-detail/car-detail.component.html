@@ -20,14 +20,14 @@
     </div>
   </div>
   <div class="col-md-2">
-    <div *ngFor="let car of cars" class="card" style="width: 18rem"> 
+    <div class="card" style="width: 18rem"> 
       <ul  class="list-group list-group-flush">
        
-        <li class="list-group-item">Marka: {{ car.brandName }}</li>
-        <li class="list-group-item">Model: {{ car.name }}</li>
-        <li class="list-group-item">Yıl:   {{ car.modelYear }}</li>
-        <li class="list-group-item">Renk:  {{ car.colorName }}</li>
-        <li class="list-group-item">Fiyat: {{ car.dailyPrice }} TL</li>
+        <li class="list-group-item">Marka: {{ cars.brandName }}</li>
+        <li class="list-group-item">Model: {{ cars.name }}</li>
+        <li class="list-group-item">Yıl:   {{ cars.modelYear }}</li>
+        <li class="list-group-item">Renk:  {{ cars.colorName }}</li>
+        <li class="list-group-item">Fiyat: {{ cars.dailyPrice }} TL</li>
 
       </ul> 
       <br>

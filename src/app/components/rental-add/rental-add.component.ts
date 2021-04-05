@@ -6,16 +6,18 @@ import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { Customer } from 'src/app/models/customer';
 import { Rental } from 'src/app/models/rental';
+import { CarService } from 'src/app/services/car.service';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-rental-add',
   templateUrl: './rental-add.component.html',
-  styleUrls: ['./rental-add.component.css']
+  styleUrls: ['./rental-add.component.css'],
+  providers: [DatePipe],
 })
 export class RentalAddComponent implements OnInit {
   customers: Customer[];
-  customerId: number;
+  id: number;
   rentDate: Date;
   returnDate: Date;
   @Input() car: Car;
@@ -27,6 +29,7 @@ export class RentalAddComponent implements OnInit {
   firstDateSelected: boolean = false;
 
   constructor(
+   
     private customerService: CustomerService,
     private router: Router,
     private toastrService: ToastrService,
@@ -40,10 +43,12 @@ export class RentalAddComponent implements OnInit {
   getCustomer() {
     this.customerService.getCustomers().subscribe((response) => {
       this.customers = response.data;
+      
       console.log(response.data);
       this.dataLoaded = true;
     });
   }
+ 
   // event.toISOString()
   //> "2011-10-05T14:48:00.000Z"
   // event.toISOString().slice(0,10)
@@ -81,9 +86,9 @@ export class RentalAddComponent implements OnInit {
       carDescription: this.car.description,
       rentDate: this.rentDate,
       returnDate: this.returnDate,
-      customerId: this.customerId,
+      id: this.id
     };
-    if (MyRental.customerId == undefined || MyRental.rentDate == undefined) {
+    if (MyRental.id ==undefined || MyRental.rentDate == undefined) {
       this.toastrService.error("Eksik bilgi girdiniz","Bilgilerinizi kontrol edin")
     } else{
       this.router.navigate(['/payment/', JSON.stringify(MyRental)]);
@@ -99,8 +104,8 @@ export class RentalAddComponent implements OnInit {
     this.firstDateSelected = true;
   }
 
-  setCustomerId(customerId: string) {
-    this.customerId = +customerId;
-    console.log(this.customerId);
+  setCustomerId(id: string) {
+    this.id =+ id;
+    console.log(this.id);
   }
 }

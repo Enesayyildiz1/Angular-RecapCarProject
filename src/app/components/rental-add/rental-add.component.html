@@ -42,7 +42,7 @@
               type="text"
               disabled="disabled"
               class="form-control"
-              [value]="car.carDailyPrice | currency: '₺'"
+              [value]="car.dailyPrice "
             />
           </div>
         </div>
@@ -51,12 +51,12 @@
             >Müşteri</label
           >
           <div class="col-8">
-            <select class="form-select" [(ngModel)]="customerId">
+            <select class="form-select" [(ngModel)]="id">
               <option
-                [ngValue]="customer.customerId"
+                [ngValue]="customer.id"
                 *ngFor="let customer of customers"
               >
-                {{ customer.firstName }} {{ customer.lastName }} |
+                {{customer.id}}--
                 {{ customer.companyName }}
               </option>
             </select>
