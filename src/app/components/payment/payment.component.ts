@@ -93,9 +93,12 @@ export class PaymentComponent implements OnInit {
       expirationDate: this.expirationDate,
       cardCvv: this.cardCvv,
     };
-    this.cardExist = await this.isCardExist(fakeCard);
-    if (this.cardExist) {
+    this.cardExist = await this.isCardExist(this.cardNumber);
+    if (this.cardExist==true) {
       console.log("Kart doğru");
+    
+    
+    
       this.fakeCard = await this.getFakeCardByCardNumber(this.cardNumber);
       if (this.fakeCard.moneyInTheCard >= this.amountOfPayment) {
         this.fakeCard.moneyInTheCard =
@@ -115,8 +118,8 @@ export class PaymentComponent implements OnInit {
     }
   }
 
-  async isCardExist(fakeCard: FakeCard) {
-    return (await this.fakeCardService.isCardExist(fakeCard).toPromise())
+  async isCardExist(cardNumber: string) {
+    return (await this.fakeCardService.isCardExist(cardNumber).toPromise())
       .success;
   }
 

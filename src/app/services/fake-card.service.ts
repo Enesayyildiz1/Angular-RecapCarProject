@@ -15,10 +15,10 @@ export class FakeCardService {
   ) { }
   apiUrl = 'https://localhost:44305/api/';
 
-  isCardExist(fakeCard:FakeCard):Observable<ResponseModel>{
-    let newPath = this.apiUrl + "fakecards/iscardexist";
-    console.log(fakeCard);
-    return this.httpClient.post<ResponseModel>(newPath,fakeCard);
+  isCardExist(cardNumber:string):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "fakecards/iscardexist?cardnumber="+cardNumber;
+    
+    return this.httpClient.get<ListResponseModel<FakeCard>>(newPath);
     console.log(Response);
   }
 
