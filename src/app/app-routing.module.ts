@@ -8,6 +8,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 
 import { RentalComponent } from './components/rental/rental.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
 
 const routes: Routes = [
   {path:"cars",pathMatch:"full",component:CarComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:"cars/color/:colorId/brand/:brandId",component:CarComponent},
   { path: 'cars/detail/:carId', component: CarDetailComponent },
   {path:"rental/:carId", component:RentalAddComponent},
-  {path:"payment/:rental",component:PaymentComponent}
+  {path:"payment/:rental",component:PaymentComponent},
+  {path:"cars/add",component:CarAddComponent}
   
 
   

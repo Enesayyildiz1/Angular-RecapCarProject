@@ -18,7 +18,8 @@ import {ToastrModule} from "ngx-toastr";
 import { DatePipe } from '@angular/common';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import { RentalAddComponent } from './components/rental-add/rental-add.component'
+import { RentalAddComponent } from './components/rental-add/rental-add.component';
+import { CarAddComponent } from './components/car-add/car-add.component'
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { RentalAddComponent } from './components/rental-add/rental-add.component
     
     PaymentComponent,
     
-    RentalAddComponent
+    RentalAddComponent,
+    
+    CarAddComponent
   ],
   imports: [
     BrowserModule,
