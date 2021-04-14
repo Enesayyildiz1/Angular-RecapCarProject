@@ -5,6 +5,7 @@ import { Car } from '../models/car';
 import { ListResponseModel } from '../models/listResponseModel';
 import { RealCar } from '../models/realCar';
 import { ResponseModel } from '../models/responseModel';
+import { SingleResponseModel } from '../models/singleResponseModel';
 
 
 @Injectable({
@@ -19,10 +20,15 @@ export class CarService {
       let newPath=this.apiUrl+"cars/getcardetails"
      return this.httpClient.get<ListResponseModel<Car>>(newPath);
     }
-    getCarById(carId:number):Observable<ListResponseModel<Car>> {
+    getCarById(carId:number):Observable<SingleResponseModel<Car>> {
       let newPath=this.apiUrl+"cars/getcardetailsbyid?carId="+carId
-     return this.httpClient.get<ListResponseModel<Car>>(newPath);
+     return this.httpClient.get<SingleResponseModel<Car>>(newPath);
     }
+    getCarsById(carId:number):Observable<SingleResponseModel<RealCar>> {
+      let newPath=this.apiUrl+"cars/getbyid?id="+carId
+     return this.httpClient.get<SingleResponseModel<RealCar>>(newPath);
+    }
+    
 
     getCarsByColorId(colorId:number):Observable<ListResponseModel<Car>> {
       let newPath=this.apiUrl+"cars/getByColorId?colorId="+colorId
@@ -39,6 +45,10 @@ export class CarService {
      add(car:RealCar):Observable<ResponseModel>
      {
        return this.httpClient.post<ResponseModel>(this.apiUrl+"cars/add",car)
+     }
+     update(car:RealCar):Observable<ResponseModel>
+     {
+       return this.httpClient.post<ResponseModel>(this.apiUrl+"cars/update",car)
      }
 
   }

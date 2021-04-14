@@ -61,7 +61,7 @@ export class PaymentComponent implements OnInit {
     this.carService
       .getCarById(this.rental.carId)
       .subscribe((response) => {
-        this.cars = response.data[0];
+        this.cars = response.data;
         this.paymentCalculator();
       });
   }
