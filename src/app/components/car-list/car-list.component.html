@@ -1,0 +1,32 @@
+<table style="margin-top: 20px"  class="table">
+    <thead><tr>
+       <th>Id</th>
+       <th>Name</th>
+       <th>Brand Name</th>
+       <th>Color Name</th>
+       <th>Model Year</th>
+       <th>Daily Price</th>
+       <th></th>
+     </tr></thead>
+     <tbody>
+   
+       <tr
+         
+         *ngFor="let car of cars "
+        
+       >
+         <td>{{ car.id }}</td>
+         <td>{{ car.name }}</td>
+         <td>{{ car.brandName }}</td>
+         <td>{{ car.colorName }}</td>
+         <td>{{ car.modelYear }}</td>
+         <td>{{ car.dailyPrice }}</td>
+         <td>
+            <button class="btn btn-danger">Sil</button>
+          </td>
+         <td>
+           <button class="btn btn-primary" routerLink="/cars/update/{{car.id}}" >Güncelle</button>
+         </td>
+       </tr>
+     </tbody>
+   </table>

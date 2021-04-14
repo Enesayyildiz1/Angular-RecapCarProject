@@ -1,0 +1,16 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+        <th>Color Id</th>
+        <th>Color Name</th></tr>
+    </thead>
+    <tbody *ngFor="let color of colors" >
+        <tr>
+            <td>{{color.id}}</td>
+            <td>{{color.name}}</td>
+            <td><button class="btn btn-danger"   routerLink="/colors/update/{{ color.id }}">
+                Güncelle
+        </button> </td></tr>
+    </tbody>
+</table>
+

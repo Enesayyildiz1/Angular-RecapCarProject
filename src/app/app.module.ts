@@ -19,7 +19,15 @@ import { DatePipe } from '@angular/common';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
-import { CarAddComponent } from './components/car-add/car-add.component'
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { BrandListComponent } from './components/brand-list/brand-list.component';
+import { ColorListComponent } from './components/color-list/color-list.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { CarListComponent } from './components/car-list/car-list.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component'
 
 @NgModule({
   declarations: [
@@ -41,7 +49,23 @@ import { CarAddComponent } from './components/car-add/car-add.component'
     
     RentalAddComponent,
     
-    CarAddComponent
+    CarAddComponent,
+    
+    BrandAddComponent,
+    
+    ColorAddComponent,
+    
+    BrandUpdateComponent,
+    
+    BrandListComponent,
+    
+    ColorListComponent,
+    
+    ColorUpdateComponent,
+    
+    CarListComponent,
+    
+    CarUpdateComponent
   ],
   imports: [
     BrowserModule,
