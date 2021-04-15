@@ -5,10 +5,13 @@
         <th>Brand Name</th></tr>
     </thead>
     <tbody *ngFor="let brand of brands" >
-        <tr>
+        <tr  >
             <td>{{brand.id}}</td>
             <td>{{brand.name}}</td>
-            <td><button class="btn btn-danger"   routerLink="/brands/update/{{ brand.id }}">
+            <td>
+                <button class="btn btn-danger" (click)="setCurrentBrand(brand)" (click)="delete(currentBrand)">Sil</button>
+              </td>
+            <td><button class="btn btn-success"   routerLink="/brands/update/{{ brand.id }}">
                 Güncelle
         </button> </td></tr>
     </tbody>

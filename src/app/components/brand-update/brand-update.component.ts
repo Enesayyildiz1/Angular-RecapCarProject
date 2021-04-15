@@ -69,6 +69,7 @@ getBrandsById(brandId:number) {
         this.toastrService.error("Form Eksik");
       }
   }
+  
 
 
 }

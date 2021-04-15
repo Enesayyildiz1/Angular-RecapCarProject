@@ -8,7 +8,10 @@
         <tr>
             <td>{{color.id}}</td>
             <td>{{color.name}}</td>
-            <td><button class="btn btn-danger"   routerLink="/colors/update/{{ color.id }}">
+            <td>
+                <button class="btn btn-danger" (click)="setCurrentColor(color)" (click)="delete(currentColor)">Sil</button>
+              </td>
+            <td><button class="btn btn-success"   routerLink="/colors/update/{{ color.id }}">
                 Güncelle
         </button> </td></tr>
     </tbody>

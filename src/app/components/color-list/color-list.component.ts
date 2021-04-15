@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  ToastrService } from 'ngx-toastr';
 import { Color } from 'src/app/models/color';
 import { ColorService } from 'src/app/services/color.service';
 
@@ -9,7 +10,9 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class ColorListComponent implements OnInit {
 colors:Color[];
-  constructor(private colorService:ColorService) { }
+currentColor:Color;
+  constructor(private colorService:ColorService,
+    private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.getColors();
@@ -20,5 +23,29 @@ colors:Color[];
       {
         this.colors=response.data;
       }) 
+  }
+  delete(color:Color){
+    
+    this.colorService.getBrandsById(color?.id).subscribe(response=>{
+      let deletedColor:Color = response.data;
+      this.colorService.delete(deletedColor).subscribe(response => {
+        this.toastrService.success(response.message, "Success")
+        this.getColors();
+      },responseError=>{
+        if(responseError.error.ValidationErrors != null 
+          && responseError.error.ValidationErrors.length>0){
+          let errorText:string;
+          for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
+            //errorText += responseError.error.ValidationErrors[i].ErrorMessage + "\n";
+            this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage, "Validation Error");
+          }
+          //this.toastrService.error(errorText, "Validation Error");
+        };
+      })
+    });
+  }
+  setCurrentColor(color:Color)
+  {
+    this.currentColor=color;
   }
 }

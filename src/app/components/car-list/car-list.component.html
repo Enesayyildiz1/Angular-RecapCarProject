@@ -17,12 +17,12 @@
        >
          <td>{{ car.id }}</td>
          <td>{{ car.name }}</td>
-         <td>{{ car.brandName }}</td>
-         <td>{{ car.colorName }}</td>
+         <td>{{ car.brandId }}</td>
+         <td>{{ car.colorId }}</td>
          <td>{{ car.modelYear }}</td>
          <td>{{ car.dailyPrice }}</td>
          <td>
-            <button class="btn btn-danger">Sil</button>
+            <button class="btn btn-danger"  (click)="setCurrentCar(car)" (click)="delete(currentCar)">Sil</button>
           </td>
          <td>
            <button class="btn btn-primary" routerLink="/cars/update/{{car.id}}" >Güncelle</button>

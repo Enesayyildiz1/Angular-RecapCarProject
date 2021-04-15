@@ -30,4 +30,8 @@ export class BrandService {
     {
       return this.httpClient.post<ResponseModel>(this.apiUrl+"/update",brand);
     }
+    delete(brand:Brand):Observable<ResponseModel>
+    {
+      return this.httpClient.post<ResponseModel>(this.apiUrl+"/delete",brand);
+    }
   }
