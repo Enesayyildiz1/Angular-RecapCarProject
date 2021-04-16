@@ -17,6 +17,7 @@ import { ColorListComponent } from './components/color-list/color-list.component
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {path:"cars",pathMatch:"full",component:CarComponent},
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path:"colors/list",component:ColorListComponent},
   {path:"colors/update/:colorId",component:ColorUpdateComponent},
   {path:"cars/list",component:CarListComponent},
-  {path:"cars/update/:carId",component:CarUpdateComponent}
+  {path:"cars/update/:carId",component:CarUpdateComponent},
+  {path:"login",component:LoginComponent}
   
 
   
