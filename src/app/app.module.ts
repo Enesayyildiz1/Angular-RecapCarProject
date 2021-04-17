@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import{HttpClientModule} from '@angular/common/http';
+import{HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
@@ -29,6 +29,8 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
 import { CarListComponent } from './components/car-list/car-list.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { LoginComponent } from './components/login/login.component'
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { LoginComponent } from './components/login/login.component'
     
     CarUpdateComponent,
     
-    LoginComponent
+    LoginComponent,
+    
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -83,10 +87,12 @@ import { LoginComponent } from './components/login/login.component'
       }
     )
   ],
-  providers: [
-    DatePipe,
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+    DatePipe
   ],
   bootstrap: [AppComponent]
   
 })
+
+
 export class AppModule { }

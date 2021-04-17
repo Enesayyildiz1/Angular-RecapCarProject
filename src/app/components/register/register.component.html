@@ -1,0 +1,22 @@
+<h3 class="h3 mb-3 fw-normal">Üye Kayıt Formu</h3>
+<form [formGroup]="registerForm">
+<div class="form-floating mb-3">
+    <input   formControlName="firstName" type="text" class="form-control" id="floatingInput" placeholder="Ad">
+    <label for="floatingInput">Ad</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input formControlName="lastName" type="text" class="form-control" id="floatingPassword" placeholder="Soyad">
+    <label for="floatingPassword">Soyad</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+    <label for="floatingInput">E-mail</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Şifre">
+    <label for="floatingPassword">Şifre</label>
+  </div>
+  <button class="w-25 btn btn-lg btn-success" type="submit" (click)="register()">
+   Kaydol
+  </button>
+</form>

@@ -34,11 +34,15 @@ export class LoginComponent implements OnInit {
             console.log(response);
             localStorage.setItem("token",response.data.token)
         },responseError=>
+
         {
           console.log(responseError);
           this.toastrService.error(responseError.error);
           
         })
+    }
+    else{
+      this.toastrService.error("Form Eksik");
     }
   }
 
