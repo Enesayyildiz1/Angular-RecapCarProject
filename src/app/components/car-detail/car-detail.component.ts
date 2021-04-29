@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./car-detail.component.css']
 })
 export class CarDetailComponent implements OnInit {
-  cars:Car;
+  car:Car;
   carImages:CarImage[]=[];
   baseUrl="https://localhost:44305";
   rentalControl = false;
@@ -30,7 +30,7 @@ export class CarDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe((parametreler)=>
     {
       this.getCarImagesByCarId(parametreler["carId"]);
-     this.getCarByCarId(parametreler["carId"]);
+     this.getCarById(parametreler["carId"]);
      this.getCarRentalControl(parametreler["carId"])
      
     }) 
@@ -41,9 +41,7 @@ export class CarDetailComponent implements OnInit {
       this.carImageService.getCarImagesByCarId(id).subscribe(response=>
         {
             this.carImages= response.data;
-            console.log(this.carImages);
-            console.log(this.baseUrl);
-            console.log(this.cars);
+          
         }
         
 
@@ -58,13 +56,13 @@ export class CarDetailComponent implements OnInit {
       return 'carousel-item';
     }
   }
-  getCarByCarId(carId:number) {
-    this.carService.getCarById(carId).subscribe(response=>
-      {
-        this.cars=response.data;
-        
-      })
-    }
+  getCarById(carId: number) {
+    this.carService.getCarById(carId).subscribe((response) => {
+      this.car = response.data[0];
+      console.log(this.car);
+    
+    });
+  }
     getCarRentalControl(carId:number) {
       this.rentalService.getRentalCarControl(carId).subscribe((response) => { 
         this.rentalControl=response.success;

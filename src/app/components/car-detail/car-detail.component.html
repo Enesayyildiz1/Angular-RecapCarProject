@@ -21,13 +21,13 @@
   </div>
   <div class="col-md-2">
     <div class="card" style="width: 18rem"> 
-      <ul  class="list-group list-group-flush">
+      <ul   class="list-group list-group-flush" >
        
-        <li class="list-group-item">Marka: {{ cars.brandName }}</li>
-        <li class="list-group-item">Model: {{ cars.name }}</li>
-        <li class="list-group-item">Yıl:   {{ cars.modelYear }}</li>
-        <li class="list-group-item">Renk:  {{ cars.colorName }}</li>
-        <li class="list-group-item">Fiyat: {{ cars.dailyPrice }} TL</li>
+        <li class="list-group-item">Marka: {{ car.brandName }}</li>
+        <li class="list-group-item">Model: {{ car.name }}</li>
+        <li class="list-group-item">Yıl:   {{ car.modelYear }}</li>
+        <li class="list-group-item">Renk:  {{ car.colorName }}</li>
+        <li class="list-group-item">Fiyat: {{ car.dailyPrice }} TL</li>
 
       </ul> 
       <br>
@@ -37,7 +37,7 @@
       <div class="card-body d-grid gap-2 mx-auto">
         <div *ngIf="rentalControl == true" class="btn-group me-2">
           <div style="margin: auto;">
-            <app-rental-add [car]="cars"></app-rental-add>
+            <app-rental-add [car]="car"></app-rental-add>
           </div>
         </div>
       </div>
