@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
+import { Observable } from 'rxjs';
 import { LoginModel } from '../models/loginModel';
 import { RegisterModel } from '../models/registerModel';
 import { ResponseModel } from '../models/responseModel';
@@ -31,5 +32,9 @@ export class AuthService {
       {
         return false;
       }
+    }
+    getUserByEmail(email: string): Observable<SingleResponseModel<RegisterModel>> {
+      let newPath = this.apiUrl + 'users/getbyemail?email=' + email;
+      return this.httpClient.get<SingleResponseModel<RegisterModel>>(newPath);
     }
 }

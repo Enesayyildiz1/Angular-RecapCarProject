@@ -1,18 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Customer } from 'src/app/models/customer';
+import { RegisterModel } from 'src/app/models/registerModel';
 import { AuthService } from 'src/app/services/auth.service';
+import { CustomerService } from 'src/app/services/customer.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  customer:Customer;
   loginForm:FormGroup;
-  constructor(private formBuilder:FormBuilder,private authService:AuthService,private toastrService:ToastrService) { }
+  
+  currentCustomerEmail: string = '';
+  constructor(private formBuilder:FormBuilder,
+    private authService:AuthService,
+    private toastrService:ToastrService,
+    private localStorageService:LocalStorageService,
+    private customerService:CustomerService
+    ) { }
 
   ngOnInit(): void {
+    this.setCurrentCustomerEmail();
     this.createLoginForm();
+   
   }
   createLoginForm()
   {
@@ -30,9 +45,13 @@ export class LoginComponent implements OnInit {
       let loginUser=Object.assign({},this.loginForm.value)
       this.authService.login(loginUser).subscribe(response=>
         {
+          
           this.toastrService.success(response.message)
             console.log(response);
-            localStorage.setItem("token",response.data.token)
+            localStorage.setItem("token",response.data.token);
+            this.getCustomerByEmail(loginUser.email);
+
+           
         },responseError=>
 
         {
@@ -45,5 +64,18 @@ export class LoginComponent implements OnInit {
       this.toastrService.error("Form Eksik");
     }
   }
+  getCustomerByEmail(email: string) {
+    this.customerService.getCustomerByEmail(email).subscribe(responseSuccess => {
+       this.customer = responseSuccess.data;
+       this.localStorageService.setCurrentCustomer(this.customer);
+    });
+ }
+
+
+ setCurrentCustomerEmail() {
+    return this.localStorageService.getCurrentCustomer()
+       ? this.currentCustomerEmail = this.localStorageService.getCurrentCustomer().email
+       : null;
+ }
 
 }
