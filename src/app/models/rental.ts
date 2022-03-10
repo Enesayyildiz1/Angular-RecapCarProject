@@ -5,6 +5,7 @@ export interface Rental{
     colorName:string,
     firstName?:string,
     lastName?:string,
+    customerName?:string,
     companyName?:string,
     carModelYear:number,
     carDailyPrice:number,
